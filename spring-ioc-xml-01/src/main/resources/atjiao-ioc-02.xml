@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beans>
+        <bean id="UserDao"  class="com.atjiao.ioc2.UserDao"></bean>
+
+        <bean id="UserService" class="com.atjiao.ioc2.UserService">
+        <constructor-arg name="name" value="小焦"/>
+        <constructor-arg name="age" value="20"/>
+        <constructor-arg name="userDao" ref="UserDao"/>
+        </bean>
+    </beans>
+
+    <beans>
+        <bean id="MovieFinder" class="com.atjiao.ioc2.MovieFinder"/>
+
+        <bean id="SimpleMovieLister" class="com.atjiao.ioc2.SimpleMovieLister">
+            <property name="movieName" value="电影"/>
+            <property name="movieFinder" ref="MovieFinder"/>
+        </bean>
+    </beans>
+
+</beans>
